@@ -3,7 +3,10 @@ import path from 'path';
 import { getFileBirthtimeMs } from './getFileBirthtimeMs';
 import { getOldestFileBirthtimeMs } from './getOldestFileBirthtimeMs';
 
-export const deleteOldestFile = (directoryPath: string, files: string[]) => {
+export const deleteOldestFile = (
+  directoryPath: string,
+  files: string[]
+): void => {
   const oldestFileBirthtimeMs = getOldestFileBirthtimeMs(directoryPath, files);
 
   files.forEach((file) => {

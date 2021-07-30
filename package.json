@@ -1,14 +1,18 @@
 {
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --signal SIGKILL src/index.ts",
+    "lint": "eslint ./** --fix",
     "build": "rm -rf build && webpack",
-    "heroku-postbuild": "rm -rf build && npm ci && webpack",
+    "heroku-postbuild": "npm run lint && rm -rf build && npm ci && webpack",
     "start": "cross-env NODE_ENV=production node build/index.bundle.js"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
     "@types/node": "^16.4.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
     "cross-env": "^7.0.3",
+    "eslint": "^7.31.0",
     "nodemon": "^2.0.12",
     "ts-loader": "^9.2.3",
     "ts-node": "^10.1.0",
