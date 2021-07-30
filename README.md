@@ -21,6 +21,12 @@ npm run dev
 npm run build
 ```
 
+> Lint project and find mistakes
+
+```
+npm run lint
+```
+
 > Compiles for deploy on heroku
 
 ```
