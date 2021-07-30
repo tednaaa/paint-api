@@ -1,8 +1,8 @@
 {
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --signal SIGKILL src/index.ts",
-    "build": "rm -rf build && cross-env NODE_ENV=production webpack",
-    "heroku-postbuild": "rm -rf build && npm ci && cross-env NODE_ENV=production webpack",
+    "build": "rm -rf build && webpack",
+    "heroku-postbuild": "rm -rf build && npm ci && webpack",
     "start": "cross-env NODE_ENV=production node build/index.bundle.js"
   },
   "devDependencies": {
