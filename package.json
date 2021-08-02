@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=production node build/index.bundle.js"
   },
   "engines": {
-    "node": "14.x"
+    "node": "14.7.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
