@@ -1,9 +1,9 @@
 {
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --signal SIGKILL src/index.ts",
-    "lint": "eslint ./** --fix",
+    "lint": "eslint ./src/** --fix",
     "build": "rm -rf build && webpack",
-    "heroku-postbuild": "npm run lint && rm -rf build && npm ci && webpack",
+    "heroku-postbuild": "rm -rf build && npm ci && npm run lint && webpack",
     "start": "cross-env NODE_ENV=production node build/index.bundle.js"
   },
   "devDependencies": {
