@@ -1,11 +1,13 @@
 import { Socket } from 'socket.io';
+import { IParsedMessage } from '../interfaces';
 import { handleConnect, handleMessage } from './handlers';
 
 export const handleConnection = (socket: Socket): void => {
   socket.on('hello', (roomId: string) => {
-    socket.broadcast
-      .to(roomId)
-      .emit('connect', `User with id ${roomId} was connected`);
+    handleConnect(socket, roomId);
   });
-  // socket.on('message', handleMessage);
+
+  socket.on('message', (message: IParsedMessage) => {
+    handleMessage(socket, message);
+  });
 };

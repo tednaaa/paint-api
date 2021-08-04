@@ -15,8 +15,9 @@ class ImageController {
     imageService.save(image, filename);
 
     const files = readdirSync(IMAGES_PATH);
+    const maxImagesCount = 10;
 
-    if (files.length > 2) {
+    if (files.length > maxImagesCount) {
       deleteOldestFile(IMAGES_PATH, files);
     }
 
