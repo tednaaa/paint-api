@@ -1,10 +1,10 @@
 import express from 'express';
-import { router } from './router';
-import { CORS_CLIENT_URL, PORT } from './utils';
 import cors from 'cors';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
-import { handleConnection } from './sockets';
+import { CORS_CLIENT_URL, PORT } from './utils';
+import { router } from './router';
+import { handleConnection } from './socket';
 
 const app = express();
 const httpServer = createServer(app);

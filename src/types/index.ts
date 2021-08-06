@@ -1,8 +1,4 @@
-export type TMethod = 'connect' | 'draw';
-export type TFigure =
-  | 'brush'
-  | 'rect'
-  | 'circle'
-  | 'eraser'
-  | 'line'
-  | 'finish';
+import { IBrush, ICircle, IEraser, ILine, IRectangle } from '../interfaces';
+
+export type IFigure = IBrush | IRectangle | ICircle | IEraser | ILine;
+export type IColor = string | CanvasGradient | CanvasPattern;

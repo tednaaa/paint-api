@@ -1,9 +1,9 @@
 import { Socket } from 'socket.io';
-import { IParsedMessage } from '../../interfaces';
+import { IMessage } from '../../interfaces';
 
-export const handleMessage = (
+export const emitBroadcastMessage = (
   socket: Socket,
-  message: IParsedMessage
+  message: IMessage
 ): void => {
   socket.broadcast.emit('message', message);
 };
