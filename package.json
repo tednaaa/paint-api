@@ -1,8 +1,9 @@
 {
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon --signal SIGKILL src/index.ts",
-    "lint": "eslint ./src/** --fix",
-    "build": "rm -rf build && webpack",
+    "lint": "eslint ./src --fix",
+    "prebuild": "rimraf build",
+    "build": "webpack",
     "start": "cross-env NODE_ENV=production node build/index.bundle.js"
   },
   "engines": {
