@@ -1,4 +1,4 @@
-# [Client side repo](github.com/tednaaa/paint)
+# [Client side repo](https://github.com/tednaaa/paint)
 
 ## Installation
 
