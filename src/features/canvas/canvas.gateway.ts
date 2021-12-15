@@ -8,7 +8,7 @@ import {
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
 
-@WebSocketGateway(8080, { cors: true, namespace: '/canvas' })
+@WebSocketGateway(80, { cors: true, namespace: '/canvas' })
 export class CanvasGateway implements OnGatewayInit {
   @WebSocketServer() server: Server;
 
