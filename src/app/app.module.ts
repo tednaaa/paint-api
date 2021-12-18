@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { CanvasGateway } from '@/features/canvas';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { ImageModule } from '@/modules/image';
+import { CanvasModule } from '@/modules/canvas';
 
 @Module({
-  imports: [],
+  imports: [ImageModule, CanvasModule],
   controllers: [AppController],
-  providers: [AppService, CanvasGateway],
+  providers: [AppService],
 })
 export class AppModule {}
