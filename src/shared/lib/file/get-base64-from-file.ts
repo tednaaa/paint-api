@@ -1,4 +1,4 @@
-const fs = require('fs');
+import * as fs from 'fs';
 
 export const getBase64FromFile = (filePath: string): string | null => {
   if (fs.existsSync(filePath)) {
