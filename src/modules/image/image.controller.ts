@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { ImageService } from './image.service';
-import { CreateImageDto } from './dto/create-image.dto';
+import { CreateImageDto, FindImageDto } from './dto/image.dto';
 
 @Controller('image')
 export class ImageController {
@@ -12,7 +12,7 @@ export class ImageController {
   }
 
   @Get(':roomId')
-  find(@Param('roomId') roomId: string) {
-    return this.imageService.find(roomId);
+  find(@Param() findImageDto: FindImageDto) {
+    return this.imageService.find(findImageDto);
   }
 }
