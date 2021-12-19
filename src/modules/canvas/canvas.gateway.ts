@@ -17,8 +17,10 @@ export class CanvasGateway implements OnGatewayInit {
   }
 
   @SubscribeMessage('draw')
-  handleDraw(@MessageBody() { room, toolName, coordinates }): void {
-    this.server.to(room).emit('draw', toolName, coordinates);
+  handleDraw(
+    @MessageBody() { room, toolName, color, lineWidth, coordinates },
+  ): void {
+    this.server.to(room).emit('draw', toolName, color, lineWidth, coordinates);
   }
 
   @SubscribeMessage('drawEnd')

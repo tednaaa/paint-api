@@ -6,7 +6,7 @@ import {
   createFolderIfNotExists,
   getBase64FromFile,
 } from '@/shared/lib/file';
-import { CreateImageDto } from './dto/create-image.dto';
+import { CreateImageDto, FindImageDto } from './dto/image.dto';
 
 @Injectable()
 export class ImageService {
@@ -56,9 +56,9 @@ export class ImageService {
     );
   }
 
-  find(roomId: string) {
+  find(findImageDto: FindImageDto) {
     const image = getBase64FromFile(
-      path.join(this.folderPath, `${roomId}.jpg`),
+      path.join(this.folderPath, `${findImageDto.roomId}.jpg`),
     );
 
     return image;
