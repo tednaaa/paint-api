@@ -5,6 +5,7 @@ import {
   createFileFromBase64,
   createFolderIfNotExists,
   getBase64FromFile,
+  removeOldestFile,
 } from '@/shared/lib/file';
 import { CreateImageDto, FindImageDto } from './dto/image.dto';
 
@@ -25,30 +26,7 @@ export class ImageService {
     const roomsCount = imagesFolder.length;
     const maxRoomsCount = 10;
 
-    if (roomsCount >= maxRoomsCount) {
-      let oldestImage = {
-        imageName: null,
-        lastUpdatedTimeMs: null,
-      };
-
-      imagesFolder.forEach((imageName: string) => {
-        const imageLastUpdatedTimeMs = fs.statSync(
-          path.join(this.folderPath, imageName),
-        ).ctimeMs;
-
-        if (
-          oldestImage.lastUpdatedTimeMs > imageLastUpdatedTimeMs ||
-          oldestImage.lastUpdatedTimeMs === null
-        ) {
-          oldestImage = {
-            imageName,
-            lastUpdatedTimeMs: imageLastUpdatedTimeMs,
-          };
-        }
-      });
-
-      fs.rmSync(path.join(this.folderPath, oldestImage.imageName));
-    }
+    if (roomsCount >= maxRoomsCount) removeOldestFile(this.folderPath);
 
     createFileFromBase64(
       createImageDto.image,
