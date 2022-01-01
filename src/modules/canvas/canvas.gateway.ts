@@ -1,6 +1,5 @@
 import { Logger } from '@nestjs/common';
 import {
-  MessageBody,
   OnGatewayInit,
   SubscribeMessage,
   WebSocketGateway,
@@ -17,15 +16,13 @@ export class CanvasGateway implements OnGatewayInit {
   }
 
   @SubscribeMessage('draw')
-  handleDraw(
-    @MessageBody() { room, toolName, color, lineWidth, coordinates },
-  ): void {
-    this.server.to(room).emit('draw', toolName, color, lineWidth, coordinates);
+  handleDraw(client: Socket, payload): void {
+    client.broadcast.in(payload.room).emit('draw', payload);
   }
 
   @SubscribeMessage('drawEnd')
-  handleDrawEnd(@MessageBody() room: string): void {
-    this.server.to(room).emit('drawEnded');
+  handleDrawEnd(client: Socket, room: string): void {
+    client.broadcast.in(room).emit('drawEnd');
   }
 
   @SubscribeMessage('joinRoom')
